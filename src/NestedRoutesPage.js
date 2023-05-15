@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { blogdata } from './blogdata'
 
-function BlogPage() {
+function NestedRoutesPage() {
   return (
     <>
-      <h1>BlogPage</h1>
+      <h1>BlogPage - Nested ROutes</h1>
       
+      <Outlet/>
+
       <ul>
         {blogdata.map(post => (
           <BlogLink key={post.slug} post={post} />
@@ -19,9 +21,9 @@ function BlogPage() {
 function BlogLink({ post }) {
   return (
     <li>
-      <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+      <Link to={`/nested-routes/${post.slug}`}>{post.title}</Link>
     </li>
   );
 }
 
-export { BlogPage };
+export { NestedRoutesPage };
